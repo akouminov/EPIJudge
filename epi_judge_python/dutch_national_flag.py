@@ -10,6 +10,19 @@ RED, WHITE, BLUE = range(3)
 
 def dutch_flag_partition(pivot_index: int, A: List[int]) -> None:
     # TODO - you fill in here.
+    pivot = A[pivot_index]
+    pointer_1 = 0
+    pointer_2 = 0
+    pointer_3 = len(A)
+    while pointer_2 < pointer_3:
+        if A[pointer_2] == pivot:
+            pointer_2 += 1
+        elif A[pointer_2] > pivot:
+            pointer_3 -= 1
+            A[pointer_3], A[pointer_2] = A[pointer_2],  A[pointer_3]
+        elif A[pointer_2] < pivot:
+            A[pointer_1], A[pointer_2] = A[pointer_2], A[pointer_1]
+            pointer_1, pointer_2 = pointer_1 + 1, pointer_2 + 1
     return
 
 
